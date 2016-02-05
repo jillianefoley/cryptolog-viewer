@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @article_topic.name %>
+</p>
+
+<p>
+  <strong>Top words:</strong>
+  <%= @article_topic.top_words %>
+</p>
+
+<%= link_to 'Edit', edit_article_topic_path(@article_topic) %> |
+<%= link_to 'Back', article_topics_path %>

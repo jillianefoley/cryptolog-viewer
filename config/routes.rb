@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :article_topics
   resources :articles
   resources :issues
   # The priority is based upon order of creation: first created -> highest priority.
