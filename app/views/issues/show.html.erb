@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @issue.month %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @issue.year %>
+</p>
+
+<p>
+  <strong>Volume:</strong>
+  <%= @issue.volume %>
+</p>
+
+<p>
+  <strong>Volume number:</strong>
+  <%= @issue.volume_number %>
+</p>
+
+<p>
+  <strong>Pdf number:</strong>
+  <%= @issue.pdf_number %>
+</p>
+
+<p>
+  <strong>Pdf:</strong>
+  <%= @issue.pdf %>
+</p>
+
+<%= link_to 'Edit', edit_issue_path(@issue) %> |
+<%= link_to 'Back', issues_path %>

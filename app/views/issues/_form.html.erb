@@ -1,0 +1,41 @@
+<%= form_for(@issue) do |f| %>
+  <% if @issue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
+
+      <ul>
+      <% @issue.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :month %><br>
+    <%= f.text_field :month %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :volume %><br>
+    <%= f.number_field :volume %>
+  </div>
+  <div class="field">
+    <%= f.label :volume_number %><br>
+    <%= f.number_field :volume_number %>
+  </div>
+  <div class="field">
+    <%= f.label :pdf_number %><br>
+    <%= f.number_field :pdf_number %>
+  </div>
+  <div class="field">
+    <%= f.label :pdf %><br>
+    <%= f.text_field :pdf %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

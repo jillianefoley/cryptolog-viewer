@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  month: MyString
+  year: 1
+  volume: 1
+  volume_number: 1
+  pdf_number: 1
+  pdf: 
+
+two:
+  month: MyString
+  year: 1
+  volume: 1
+  volume_number: 1
+  pdf_number: 1
+  pdf: 
