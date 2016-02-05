@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  type: 
+  puzzle_type: MyString
+  text: MyString
+  redactions: 1
+  picture: 
+  redacted: false
+  page: 1
+
+two:
+  title: MyString
+  type: 
+  puzzle_type: MyString
+  text: MyString
+  redactions: 1
+  picture: 
+  redacted: false
+  page: 1
