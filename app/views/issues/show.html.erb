@@ -1,34 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Month:</strong>
-  <%= @issue.month %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @issue.year %>
-</p>
-
-<p>
-  <strong>Volume:</strong>
-  <%= @issue.volume %>
-</p>
-
-<p>
-  <strong>Volume number:</strong>
-  <%= @issue.volume_number %>
-</p>
-
-<p>
-  <strong>Pdf number:</strong>
-  <%= @issue.pdf_number %>
-</p>
+<h1>
+  <%=@issue.name%>
+</h1>
 
 <p>
   <strong>Pdf:</strong>
   <%= @issue.pdf %>
 </p>
 
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @issue.articles.each do |article| %>
+      <tr>
+        <td><%= link_to article.title, article %></td>
+        <td>
+          <% if article.person %>
+            <%= link_to article.person.name, article.person %>
+          <% end %>
+        </td>
+        <td><%= article.type %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_issue_path(@issue) %> |
-<%= link_to 'Back', issues_path %>
+<%= link_to 'All Issues', issues_path %>

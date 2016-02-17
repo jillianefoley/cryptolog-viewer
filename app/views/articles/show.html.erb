@@ -6,13 +6,17 @@
 </p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @article.type %>
+  <strong>Author:</strong>
+  <% if @article.person %>
+    <%= link_to @article.person.name, @article.person %>
+  <% else %>
+    Unknown
+  <% end %>
 </p>
 
 <p>
-  <strong>Puzzle type:</strong>
-  <%= @article.puzzle_type %>
+  <strong>Type:</strong>
+  <%= @article.type %>
 </p>
 
 <p>
@@ -21,23 +25,8 @@
 </p>
 
 <p>
-  <strong>Redactions:</strong>
-  <%= @article.redactions %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= @article.picture %>
-</p>
-
-<p>
-  <strong>Redacted:</strong>
-  <%= @article.redacted %>
-</p>
-
-<p>
-  <strong>Page:</strong>
-  <%= @article.page %>
+  <strong>Issue:</strong>
+  <%= link_to @article.issue.name, @article.issue %>
 </p>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
