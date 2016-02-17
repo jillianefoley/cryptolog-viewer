@@ -21,8 +21,15 @@
 
 <p>
   <strong>Text:</strong>
-  <%= @article.text %>
+  <%= simple_format @article.text %>
 </p>
+
+
+<!-- <p>
+  <strong>HTML:</strong>
+  <%=raw @article.html %>
+</p> -->
+
 
 <p>
   <strong>Issue:</strong>
