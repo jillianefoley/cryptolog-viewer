@@ -26,3 +26,10 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+*Notes*
+I am indebted to cryptome.org for
+* providing a comprehensive index of article titles and authors by issue: http://cryptome.org/2013/03/cryptologs/nsa-cryptologs-contents-01.htm & http://cryptome.org/2013/03/cryptologs/nsa-cryptologs-contents-02.htm
+
+* providing dirty OCR of the Cryptolog files for searching purposes
