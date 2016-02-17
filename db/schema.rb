@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160205065124) do
+ActiveRecord::Schema.define(version: 20160205070610) do
 
   create_table "article_topics", force: :cascade do |t|
     t.string   "name"
@@ -31,7 +31,11 @@ ActiveRecord::Schema.define(version: 20160205065124) do
     t.integer  "page"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "issue_id"
+    t.integer  "author_id"
   end
+
+  add_index "articles", ["issue_id"], name: "index_articles_on_issue_id"
 
   create_table "departments", force: :cascade do |t|
     t.string   "name"
@@ -48,13 +52,17 @@ ActiveRecord::Schema.define(version: 20160205065124) do
     t.binary   "pdf"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "editor_id"
   end
 
   create_table "people", force: :cascade do |t|
     t.string   "name"
     t.string   "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "department_id"
   end
+
+  add_index "people", ["department_id"], name: "index_people_on_department_id"
 
 end
