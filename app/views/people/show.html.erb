@@ -1,14 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @person.name %>
-</p>
+<div class="content">
+  <div class="container">
+    <div class="main">
+      <h1><%= @header %></h1>
+			<% unless @article_search.results.empty? %>
+				<h2>Articles Authored:</h2>
 
-<p>
-  <strong>Role:</strong>
-  <%= @person.role %>
-</p>
+				<%= render 'shared/article_table' %>
+			<%end%>
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+			<% unless @issues.empty? %>
+				<h2>Issues Edited:</h2>
+
+				<table>
+				  <thead>
+				    <tr>
+				      <th>Month</th>
+				      <th>Year</th>
+				      <th>Volume</th>
+				      <th>Volume number</th>
+				    </tr>
+				  </thead>
+
+				  <tbody>
+				    <% @issues.each do |issue| %>
+				      <tr>
+				        <td><%= issue.month %></td>
+				        <td><%= issue.year %></td>
+				        <td><%= issue.volume %></td>
+				        <td><%= issue.volume_number %></td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			<% end %>
+
+		</div>
+		<div class="aside">
+			<%= link_to 'Edit Person', edit_person_path(@person) %>
+		</div>
+  </div>
+</div>

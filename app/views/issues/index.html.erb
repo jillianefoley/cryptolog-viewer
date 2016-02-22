@@ -1,37 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Issues</h1>
+<div class="content">
+  <div class="container">
+    <div class="main">
+      <h1><%= @header %></h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Volume</th>
+            <th>Number</th>
+            <th>PDF number</th>
+            <th></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Month</th>
-      <th>Year</th>
-      <th>Volume</th>
-      <th>Volume number</th>
-      <th>Pdf number</th>
-      <th>Pdf</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @issues.each do |issue| %>
-      <tr>
-        <td><%= issue.month %></td>
-        <td><%= issue.year %></td>
-        <td><%= issue.volume %></td>
-        <td><%= issue.volume_number %></td>
-        <td><%= issue.pdf_number %></td>
-        <td><%= issue.pdf %></td>
-        <td><%= link_to 'Show', issue %></td>
-        <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
-        <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Issue', new_issue_path %>
+        <tbody>
+          <% @issues.each do |issue| %>
+            <tr>
+              <td><%= issue.month %></td>
+              <td><%= issue.year %></td>
+              <td><%= issue.volume %></td>
+              <td><%= issue.volume_number %></td>
+              <td><%= issue.pdf_number %></td>
+              <td><%= link_to 'View Details', issue %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

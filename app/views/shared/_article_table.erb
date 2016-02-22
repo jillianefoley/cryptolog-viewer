@@ -1,0 +1,37 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Issue</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Type</th>
+      <th>Text?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @article_search.each_hit_with_result do |hit, article| %>
+      <tr>
+        <td><%= link_to article.issue.date, article.issue %></td>
+        <td><%= link_to article.title, article %></td>
+        <td>
+          <% if article.person %>
+            <%= link_to article.person.name, article.person %>
+          <% end %>
+        </td>
+        <td><%= article.type %></td>
+        <td><%= 'X' unless article.text.nil? %>
+      </tr>
+      <% unless hit.highlights.empty? %>
+        <% hit.highlights.each do |highlight| %>
+          <tr><td colspan=5 class="text_search_result">
+            <%= simple_format highlight.format { |word| "<strong>#{word}</strong>" } %>
+          </td></tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="pagination">
+  <%= will_paginate(@article_search.results) %>
+</div>

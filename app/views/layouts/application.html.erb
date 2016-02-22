@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CryptologViewer</title>
+  <title>Cryptolog Viewer</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+	<%= render "shared/header" %>
+	<%= render "shared/navbar" %>
+
+	<%= yield %>
+
+	<div class="footer">
+		<div class="container">
+			Created 2016 by Jillian Foley
+		</div>
+	</div>
 
 </body>
 </html>

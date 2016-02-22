@@ -4,21 +4,29 @@ class IssuesController < ApplicationController
   # GET /issues
   # GET /issues.json
   def index
-    @issues = Issue.all
+    @issues = Issue.all.order(:year, :month)
+    @header = 'Issues'
   end
 
   # GET /issues/1
   # GET /issues/1.json
   def show
+    @header = @issue.name
+    @article_search = Article.search(:include => [:issue, :person]) do
+      with(:issue_id, params[:id])
+      paginate :page => params[:page], :per_page => 30
+    end
   end
 
   # GET /issues/new
   def new
     @issue = Issue.new
+    @header = 'New Issue'
   end
 
   # GET /issues/1/edit
   def edit
+    @header = @issue.name
   end
 
   # POST /issues

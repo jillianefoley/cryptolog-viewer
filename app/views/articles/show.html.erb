@@ -1,40 +1,52 @@
+<script>
+$(document).ready(function(){
+  $(".toggle_answer").click(function(){
+      $(".answer").toggle();
+  });
+});
+</script>
+
 <p id="notice"><%= notice %></p>
+<div class="content">
+  <div class="container">
+    <div class="main">
+      <h1><%= @header %></h1>
+      <p>
+        <strong>Author:</strong>
+        <% if @article.person %>
+          <%= link_to @article.person.name, @article.person %>
+        <% else %>
+          Unknown
+        <% end %>
+      </p>
+      <p>
+        <strong>Issue:</strong>
+        <%= link_to @article.issue.name, @article.issue %>
+      </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+      <p>
+        <strong>Type:</strong>
+        <%= @article.type %>
+      </p>
 
-<p>
-  <strong>Author:</strong>
-  <% if @article.person %>
-    <%= link_to @article.person.name, @article.person %>
-  <% else %>
-    Unknown
-  <% end %>
-</p>
+      <p>
+        <strong>Text:</strong>
+        <%= simple_format @article.text %>
+      </p>
 
-<p>
-  <strong>Type:</strong>
-  <%= @article.type %>
-</p>
+      <!-- <p>
+        <strong>HTML:</strong>
+        <%=raw @article.html %>
+      </p> -->
 
-<p>
-  <strong>Text:</strong>
-  <%= simple_format @article.text %>
-</p>
+    <% if @article.is_puzzle? %>
+      <p><strong><a class="toggle_answer">Show/Hide Answer</a></strong></p>
+      <%= simple_format @article.answer, {:class => "answer", :style => "display: none;"} %>
+    <% end %>
 
-
-<!-- <p>
-  <strong>HTML:</strong>
-  <%=raw @article.html %>
-</p> -->
-
-
-<p>
-  <strong>Issue:</strong>
-  <%= link_to @article.issue.name, @article.issue %>
-</p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+    </div>
+    <div class="aside">
+      <%= link_to 'Edit Article', edit_article_path(@article) %>
+    </div>
+  </div>
+</div>

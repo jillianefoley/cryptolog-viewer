@@ -20,6 +20,8 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
+bundle exec rake sunspot:solr:start
+bundle exec rails server
 
 * ...
 

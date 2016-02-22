@@ -4,21 +4,38 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @header = 'Articles'
+
+    @article_search = Article.search(:include => [:issue, :person]) do
+      keywords params[:q] do
+        highlight :text
+      end
+      order_by :year
+      order_by :month
+      paginate :page => params[:page], :per_page => 30
+    end
+  end
+
+  # POST /search
+  def search
+
   end
 
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @header = @article.title
   end
 
   # GET /articles/new
   def new
     @article = Article.new
+    @header = 'New Article'
   end
 
   # GET /articles/1/edit
   def edit
+    @header = @article.title
   end
 
   # POST /articles

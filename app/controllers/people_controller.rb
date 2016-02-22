@@ -5,20 +5,30 @@ class PeopleController < ApplicationController
   # GET /people.json
   def index
     @people = Person.all
+    @header = 'People'
   end
 
   # GET /people/1
   # GET /people/1.json
   def show
+    @issues = Issue.where(:editor_id => @person.id)
+    @header = @person.name
+
+    @article_search = Article.search(:include => [:issue, :person]) do
+      with(:author_id, params[:id])
+      paginate :page => params[:page], :per_page => 30
+    end
   end
 
   # GET /people/new
   def new
     @person = Person.new
+    @header = 'New Person'
   end
 
   # GET /people/1/edit
   def edit
+    @header = @person.name
   end
 
   # POST /people

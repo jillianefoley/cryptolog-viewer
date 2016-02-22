@@ -1,6 +1,11 @@
-<h1>Editing Issue</h1>
 
-<%= render 'form' %>
+<div class="content">
+  <div class="container">
+    <div class="main">
+      <h1><%= @header %></h1>
+			<%= render 'form' %>
 
-<%= link_to 'Show', @issue %> |
-<%= link_to 'Back', issues_path %>
+			<%= link_to 'Back to View', @issue %>
+		</div>
+	</div>
+</div>
