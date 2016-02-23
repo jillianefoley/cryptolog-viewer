@@ -2,10 +2,8 @@ Rails.application.routes.draw do
   resources :departments
   resources :people
   resources :article_topics
-  resources :articles, path: '/articles' do
-    get 'page/:page', action: :index, on: :collection
-  end
-  resources :puzzles, :controller => :articles
+  resources :articles, type: "article"
+  resources :puzzles, :controller => :articles, type: "puzzle"
   resources :issues
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

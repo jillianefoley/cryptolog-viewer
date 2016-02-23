@@ -280,3 +280,25 @@ Wide styles
 		border-bottom: 0;
 	}
 }
+
+/* -----------------------
+Extra stuff
+------------------------*/
+
+.text_area {
+	width: 70%;
+	height: 300px;
+}
+
+.text_field {
+	width: 70%;
+}
+
+
+
+
+
+
+
+
+
