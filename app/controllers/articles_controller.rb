@@ -10,8 +10,8 @@ class ArticlesController < ApplicationController
       keywords params[:q] do
         highlight :text
       end
-      order_by :year
-      order_by :month
+      order_by :year unless params[:q]
+      order_by :month unless params[:q]
       paginate :page => params[:page], :per_page => 30
     end
   end

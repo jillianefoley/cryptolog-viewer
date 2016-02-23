@@ -14,6 +14,7 @@ class IssuesController < ApplicationController
     @header = @issue.name
     @article_search = Article.search(:include => [:issue, :person]) do
       with(:issue_id, params[:id])
+      order_by :page, :asc
       paginate :page => params[:page], :per_page => 30
     end
   end

@@ -18,6 +18,7 @@ class Article < ActiveRecord::Base
     string :type
     integer :issue_id
     integer :author_id
+    integer :page
 
     string  :sort_title do
       title.downcase.gsub(/^(an?|the)/, '')
