@@ -294,10 +294,9 @@ Extra stuff
 	width: 70%;
 }
 
-
-
-
-
+.isolated-image {
+	display: block;
+}
 
 
 

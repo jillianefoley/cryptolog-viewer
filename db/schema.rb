@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222024811) do
+ActiveRecord::Schema.define(version: 20160224195833) do
 
   create_table "article_topics", force: :cascade do |t|
     t.string   "name"
@@ -26,15 +26,18 @@ ActiveRecord::Schema.define(version: 20160222024811) do
     t.string   "puzzle_type"
     t.string   "text"
     t.integer  "redactions"
-    t.binary   "picture"
     t.boolean  "redacted"
     t.integer  "page"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "issue_id"
     t.integer  "author_id"
     t.text     "html"
     t.text     "answer"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "articles", ["issue_id"], name: "index_articles_on_issue_id"

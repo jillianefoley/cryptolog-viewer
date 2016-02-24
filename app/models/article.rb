@@ -2,6 +2,8 @@ class Article < ActiveRecord::Base
 	belongs_to :issue
 	belongs_to :person, :foreign_key => 'author_id'
 	validates :answer, :puzzle_type, :absence => true, :unless => :is_puzzle?
+    has_attached_file :picture
+    validates_attachment :picture, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
 
 	def is_puzzle?
 		type == "Puzzle"

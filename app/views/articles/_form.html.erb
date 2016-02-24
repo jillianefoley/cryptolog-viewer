@@ -15,10 +15,10 @@
     <%= f.label :title %><br>
     <%= f.text_field :title, :class => 'text_field' %>
   </div>
-  <div class="field">
+<!--   <div class="field">
     <%= f.label :type %><br>
     <%= f.text_field :type %>
-  </div>
+  </div> -->
   <div class="field">
     <%= f.label :puzzle_type %><br>
     <%= f.text_field :puzzle_type %>
@@ -27,18 +27,18 @@
     <%= f.label :text %><br>
     <%= f.text_area :text, :class => 'text_area' %>
   </div>
-  <div class="field">
+<!--   <div class="field">
     <%= f.label :redactions %><br>
     <%= f.number_field :redactions %>
-  </div>
+  </div> -->
   <div class="field">
     <%= f.label :picture %><br>
-    <%= f.text_field :picture %>
+    <%= f.file_field :picture %>
   </div>
-  <div class="field">
+<!--   <div class="field">
     <%= f.label :redacted %><br>
     <%= f.check_box :redacted %>
-  </div>
+  </div> -->
   <div class="field">
     <%= f.label :page %><br>
     <%= f.number_field :page %>
