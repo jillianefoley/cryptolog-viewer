@@ -1,25 +1,13 @@
-i = Issue.create(:pdf_number => 129, :volume => "XXI", :volume_number => '2', :month => "Summer", :year => 1995)
+def create_issue_with_articles(pdf_number, volume, vol_no, month, year, toc_string)
+  i = Issue.create(:pdf_number => pdf_number, :volume => volume, :volume_number => vol_no, :month => month, :year => year)
 
-[
-['Interview with NSA\'s Chief Information Officer'],
-['Writing as a Continuation of Analysis'],
-['Journalistic Style, Yes; Creeping Clancyism, No!'],
-['Managing Linguists in Low-density Languages'],
-['The National Information Infrastructure (NII)'],
-['What\'s this New Intercept I\'m Seeing?'],
-['The Unfocused Eye: [Redacted]'],
-['Intelligence Analysis Off-site and Open Forum'],
-['IA Vs. TA/IR: An Editorial'],
-['The Phoenix HF: An Editorial by N.G. Gerson'],
-['NSA\'s "Lessons Learned" Database'],
-['The 1995 Joint Mathematics Meetings'],
-['SIGINT Bloopers'],
-['Book Reviews'],
-['SIGINT Glossary: The Chun Wheel']
-].each do |article|
-	a = Article.new(:title => article[0], :issue => i)
-	p = Person.new(:name => article[1]) if article[1]
-	a.person = p
-	p.try(:save)
-	a.save
+  articles = toc_string.split("\n").map{ |x| x.split(" by ").map(&:strip) }
+
+  articles.each do |article|
+  	a = Article.new(:title => article[0], :issue => i)
+  	p = Person.find_or_create_by(:name => article[1]) if article[1]
+  	a.person = p
+  	p.try(:save)
+  	a.save
+  end
 end

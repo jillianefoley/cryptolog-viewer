@@ -4,8 +4,6 @@
       <th>Issue</th>
       <th>Title</th>
       <th>Author</th>
-      <th>Type</th>
-      <th>Text?</th>
     </tr>
   </thead>
   <tbody>
@@ -18,8 +16,6 @@
             <%= link_to article.person.name, article.person %>
           <% end %>
         </td>
-        <td><%= article.type %></td>
-        <td><%= 'X' unless article.text.nil? %>
       </tr>
       <% unless hit.highlights.empty? %>
         <% hit.highlights.each do |highlight| %>
