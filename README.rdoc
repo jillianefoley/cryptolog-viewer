@@ -1,39 +1,28 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Rails-based explorer for articles of a declassified NSA magazine, Cryptolog. The files were declassified in 2012 and are available in PDF format here: https://www.nsa.gov/public_info/declass/cryptologs.shtml
 
-Things you may want to cover:
+This app is not hosted publicly anywhere and is still under development. Only 8 of 136 issues have been entered into the database so far.
 
-* Ruby version
+This code was initially created for a Digital Humanities class taught at the University of Chicago by James Sparrow, Robert Morrissey, and Clovis Gladstone. I'm ABBYY FineReader to extract article text from the PDFs. I make no guarantees about the accuracy of the extracted text, or the metadata.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+*Versions*
+This app was developed using Ruby 2.1.2p95 and Rails 4.2.5.1.
 
 * Deployment instructions
-bundle exec rake sunspot:solr:start
-bundle exec rails server
+```
+gem install bundler
+bundle install
+bundle exec rake db:migrate # Initialize databases
+bundle exec rake sunspot:solr:start # Initialize solr search index
+bundle exec rails server # Start local server
+```
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
-bundle exec rake treat:install[english]
-bundle exec rake sunspot:solr:start
-bundle exec rails server
+The app can be viewed at `http://localhost:3000/issues`
 
 *Notes*
 I am indebted to cryptome.org for
 * providing a comprehensive index of article titles and authors by issue: http://cryptome.org/2013/03/cryptologs/nsa-cryptologs-contents-01.htm & http://cryptome.org/2013/03/cryptologs/nsa-cryptologs-contents-02.htm
-
 * providing dirty OCR of the Cryptolog files for searching purposes
+
+
