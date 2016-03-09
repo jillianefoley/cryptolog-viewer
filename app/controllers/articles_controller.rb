@@ -26,6 +26,7 @@ class ArticlesController < ApplicationController
   def show
     @header = @article.title
     @same_author = Article.where(:author_id => @article.author_id).where.not(:id => @article.id) if @article.author_id
+    @concepts = @article.watson_concepts
   end
 
   # GET /articles/new

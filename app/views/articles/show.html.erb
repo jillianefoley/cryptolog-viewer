@@ -30,6 +30,13 @@ $(document).ready(function(){
       </p>
 
       <p>
+        <strong>Watson-Generated Concepts:</strong>
+        <% @article.watson_concepts.each do |concept| %>
+          <%= link_to concept.name, concept %>
+        <% end %>
+      </p>
+
+      <p>
         <strong>Text:</strong>
         <%= simple_format @article.text %>
       </p>
@@ -60,6 +67,15 @@ $(document).ready(function(){
           <% @same_author.each do |article| %>
             <li><%= link_to article.title, article %></li>
         <% end %>
+        </ul>
+      <% end %>
+      <% unless @article.articles_related_by_concepts.blank? %>
+        <h3>Articles with 3 or more Shared Concepts:</h3>
+        <ul class="list-unstyled">
+          <% @article.articles_related_by_concepts.each do |id| %>
+            <% article = Article.find(id) %>
+            <li><%= link_to article.title, article %></li>
+          <% end %>
         </ul>
       <% end %>
     </div>

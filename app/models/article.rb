@@ -26,45 +26,19 @@ class Article < ActiveRecord::Base
     string  :sort_title do
       title.downcase.gsub(/^(an?|the)/, '')
     end
+
+    integer :concept_ids, :multiple => true do
+        watson_concepts.map(&:id)
+    end
   end
 
-  def populate_watson_concepts
-    username = "b22ed3d7-9fae-4c16-9b6a-3a8114bd5cd8"
-    password = "5COW4wYEtsOi"
-    account_id = "ly3tiesmer1ten"
-
-    create = Excon.put("https://gateway.watsonplatform.net/concept-insights/api/v2/corpora/#{account_id}/cryptolog2/documents/#{id}",
-       :user => username,
-       :password => password,
-       :body => {
-       "label" => title,
-       "parts" => [
-          {
-             "data" => text,
-             "name" => "Text part",
-             "content-type" => "text/plain"
-          }
-       ],
-       "user_fields" => {
-         "rails_id" => id
-       }
-    }.to_json,
-     )
-
-    # get = Excon.get("https://gateway.watsonplatform.net/concept-insights/api/v2/corpora/#{account_id}/cryptolog2/documents/#{id}/annotations",
-    #    :user => username,
-    #    :password => password)
-
-
-    response = JSON.parse(create.body)
-    concepts = {}
-    response["annotations"][0].map{|x| concepts[x["concept"]["label"]] = x["score"]}
-
-    top_5_concepts = concepts.sort_by{|k, v| v}.reverse.map{|x| x[0]}[0..4]
-    puts top_5_concepts
-    # top_5_concepts.each do |concept_name|
-    #   c = WatsonConcept.find_or_create_by(:name => concept_name)
-    #   watson_concepts << c unless watson_concepts.include? c
-    # end
+  def articles_related_by_concepts
+    query = Article.connection.execute("select article_id, count(watson_concept_id) from articles_watson_concepts awc
+      where watson_concept_id in (#{watson_concepts.map(&:id).join(",")})
+      and article_id <> #{id}
+      group by article_id
+      having count(watson_concept_id) >= 3
+      order by 2 desc")
+    query.map{|q| q["article_id"]} unless query.blank?
   end
 end
