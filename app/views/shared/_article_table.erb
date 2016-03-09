@@ -4,6 +4,7 @@
       <th>Issue</th>
       <th>Title</th>
       <th>Author</th>
+      <th>Page No. in Issue</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,7 @@
             <%= link_to article.person.name, article.person %>
           <% end %>
         </td>
+        <td><%= article.page %> </td>
       </tr>
       <% unless hit.highlights.empty? %>
         <% hit.highlights.each do |highlight| %>

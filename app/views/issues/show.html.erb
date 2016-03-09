@@ -4,6 +4,13 @@
   <div class="container">
     <div class="main">
       <h1><%= @header %></h1>
+      <p><b>Editor-in-Chief:</b>
+        <% if @issue.person %>
+          <%= link_to @issue.person.name, @issue.person %>
+        <% else %>
+          Unknown
+        <% end %>
+      </p>
       <h2>Articles in Issue</h2>
       <%= render 'shared/article_table' %>
     </div>
