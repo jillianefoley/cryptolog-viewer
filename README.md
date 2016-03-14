@@ -9,12 +9,13 @@ This code was initially created for a Digital Humanities class taught at the Uni
 ## Versions
 This app was developed using Ruby 2.1.2p95 and Rails 4.2.5.1.
 
-## Deployment instructions
+## Deployment instructions (within the root folder of this repo)
 ```
 gem install bundler
 bundle install
 bundle exec rake db:migrate # Initialize databases
 bundle exec rake sunspot:solr:start # Initialize solr search index
+bundle exec rake sunspot:reindex # Run the search indexer
 bundle exec rails server # Start local server
 ```
 
